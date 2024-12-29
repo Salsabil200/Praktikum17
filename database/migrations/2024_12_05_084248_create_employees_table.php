@@ -18,11 +18,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->integer('age');
             $table->foreignId('position_id')->constrained();
-            $table->string('cv_path')->nullable();
             $table->timestamps();
-            // Foreign key untuk posisi
-
-            $table->foreign('position_id')->references('id')->on('positions')->onDelete('cascade');
         });
     }
 

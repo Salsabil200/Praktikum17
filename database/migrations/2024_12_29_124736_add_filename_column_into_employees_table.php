@@ -12,17 +12,18 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('employees', function (Blueprint $table) {
-            $table->string('first_name')->after('id');
+            $table->string('original_filename')->after('position_id')->nullable();
+            $table->string('encrypted_filename')->after('original_filename')->nullable();
         });
     }
-
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
         Schema::table('employees', function (Blueprint $table) {
-            $table->dropColumn('first_name');
+            $table->dropColumn('encrypted_filename');
+            $table->dropColumn('original_filename');
         });
     }
 };

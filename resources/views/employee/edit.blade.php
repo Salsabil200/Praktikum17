@@ -8,29 +8,30 @@
                 <h4>Edit Employee</h4>
             </div>
             <hr>
-            <form action="{{ route('employees.update', $employee->id) }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('employees.update', ['employee' => $employee->id]) }}" method="POST"
+                enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
 
                 <div class="row">
                     <!-- First Name -->
                     <div class="col-md-6 mb-3">
-                        <label for="first_name" class="form-label">First Name</label>
-                        <input class="form-control @error('first_name') is-invalid @enderror" type="text"
-                            name="first_name" id="first_name" value="{{ old('first_name', $employee->first_name) }}"
-                            placeholder="Enter First Name" required>
-                        @error('first_name')
+                        <label for="firstName" class="form-label">First Name</label>
+                        <input class="form-control @error('firstName') is-invalid @enderror" type="text" name="firstName"
+                            id="firstName" value="{{ $errors->any() ? old('firstName') : $employee->firstname }}"
+                            placeholder="Enter First Name">
+                        @error('firstName')
                             <div class="text-danger"><small>{{ $message }}</small></div>
                         @enderror
                     </div>
 
                     <!-- Last Name -->
                     <div class="col-md-6 mb-3">
-                        <label for="last_name" class="form-label">Last Name</label>
-                        <input class="form-control @error('last_name') is-invalid @enderror" type="text" name="last_name"
-                            id="last_name" value="{{ old('last_name', $employee->last_name) }}"
-                            placeholder="Enter Last Name" required>
-                        @error('last_name')
+                        <label for="lastName" class="form-label">Last Name</label>
+                        <input class="form-control @error('lastName') is-invalid @enderror" type="text" name="lastName"
+                            id="lastName" value="{{ $errors->any() ? old('lastName') : $employee->lastname }}"
+                            placeholder="Enter Last Name">
+                        @error('lastName')
                             <div class="text-danger"><small>{{ $message }}</small></div>
                         @enderror
                     </div>

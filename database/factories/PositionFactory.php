@@ -20,7 +20,6 @@ class PositionFactory extends Factory
             'code' => fake()->stateAbbr(),
             'name' => fake()->jobTitle(),
             'description' => fake()->sentence(),
-
         ];
     }
 }
